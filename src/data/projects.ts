@@ -92,7 +92,7 @@ The entire workflow is connected to a custom UI built in NestJS, enabling sessio
 
 The portfolio integrates a custom AI chat widget that connects to an n8n automation backend, enabling visitors to have natural conversations about my skills, projects, and experience. The system uses OpenAI for intelligent responses and n8n for workflow orchestration, creating a unique and engaging portfolio experience.`,
     youtubeId: undefined,
-    liveUrl: 'https://milestone-1-resume-muhammadowais1.vercel.app/',
+    liveUrl: 'https://ai-portfolio-website-five.vercel.app/',
     technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'N8N', 'OpenAI'],
     features: [
       'AI-powered chat widget for portfolio exploration',

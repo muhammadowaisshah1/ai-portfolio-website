@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OG Image Template - Abdul Haseeb</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      width: 1200px;
+      height: 630px;
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Gradient mesh background */
+    body::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+    }
+    
+    .container {
+      position: relative;
+      z-index: 1;
+      padding: 80px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .logo {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      font-weight: bold;
+      color: white;
+    }
+    
+    .brand {
+      font-size: 28px;
+      font-weight: 600;
+      color: #F1F5F9;
+    }
+    
+    .content {
+      max-width: 900px;
+    }
+    
+    .title {
+      font-size: 72px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #F1F5F9 0%, #3B82F6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    
+    .description {
+      font-size: 32px;
+      color: #CBD5E1;
+      line-height: 1.4;
+      font-weight: 400;
+    }
+    
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .tags {
+      display: flex;
+      gap: 16px;
+    }
+    
+    .tag {
+      padding: 12px 24px;
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 9999px;
+      color: #93C5FD;
+      font-size: 18px;
+      font-weight: 500;
+    }
+    
+    .url {
+      color: #94A3B8;
+      font-size: 20px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">AH</div>
+      <div class="brand">Abdul Haseeb</div>
+    </div>
+    
+    <div class="content">
+      <h1 class="title">AI Engineer & Full-Stack Developer</h1>
+      <p class="description">Building intelligent systems with Python, OpenAI SDK, Next.js, and modern automation tools</p>
+    </div>
+    
+    <div class="footer">
+      <div class="tags">
+        <span class="tag">AI Agents</span>
+        <span class="tag">Next.js</span>
+        <span class="tag">Python</span>
+        <span class="tag">Automation</span>
+      </div>
+      <div class="url">yourportfolio.com</div>
+    </div>
+  </div>
+</body>
+</html>

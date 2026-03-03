@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --font-sans: 'Outfit', sans-serif;
+    --background: 220 26% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 220 20% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 220 20% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 189 94% 43%;
+    --primary-foreground: 220 26% 6%;
+
+    --secondary: 189 60% 30%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 15% 20%;
+    --muted-foreground: 217 10% 64%;
+
+    --accent: 189 94% 50%;
+    --accent-foreground: 220 26% 6%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 189 94% 43%;
+
+    --radius: 1rem;
+
+    /* Enhanced Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(189 94% 43%) 0%, hsl(220 80% 50%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(220 26% 6%) 0%, hsl(220 20% 15%) 100%);
+    --gradient-glow: radial-gradient(circle at 50% 0%, hsl(189 94% 43% / 0.2), transparent 50%);
+    --gradient-mesh: radial-gradient(at 40% 20%, hsl(189 94% 43% / 0.15) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, hsl(220 80% 50% / 0.15) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, hsl(189 94% 43% / 0.1) 0px, transparent 50%);
+
+    /* Professional Shadows */
+    --shadow-glow: 0 0 40px hsl(189 94% 43% / 0.3);
+    --shadow-card: 0 10px 40px hsl(220 26% 6% / 0.4);
+    --shadow-elevation-low: 0 2px 8px hsl(220 26% 6% / 0.1);
+    --shadow-elevation-medium: 0 8px 24px hsl(220 26% 6% / 0.15);
+    --shadow-elevation-high: 0 16px 48px hsl(220 26% 6% / 0.2);
+
+    /* Smooth Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Responsive Spacing */
+    --spacing-section: clamp(3rem, 8vw, 6rem);
+    --spacing-container: clamp(1rem, 4vw, 2rem);
+  }
+
+  .dark {
+    --background: 220 26% 6%;
+    --foreground: 210 40% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  /* Improved text rendering */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern" 1;
+  }
+
+  /* Responsive typography */
+  h1 {
+    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold;
+  }
+
+  h2 {
+    @apply text-3xl sm:text-4xl md:text-5xl font-bold;
+  }
+
+  h3 {
+    @apply text-2xl sm:text-3xl font-bold;
+  }
+
+  h4 {
+    @apply text-xl sm:text-2xl font-semibold;
+  }
+
+  /* Container improvements */
+  .container {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .gradient-mesh {
+    background: var(--gradient-mesh);
+  }
+}

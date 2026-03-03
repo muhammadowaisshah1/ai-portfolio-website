@@ -1,0 +1,27 @@
+'use client';
+
+import Link from "next/link";
+import { useEffect } from "react";
+
+const NotFound = () => {
+  useEffect(() => {
+    console.error("404 Error: User attempted to access non-existent route");
+  }, []);
+
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-background">
+      <div className="text-center">
+        <h1 className="text-6xl font-bold mb-4 text-foreground">404</h1>
+        <p className="text-xl mb-8 text-muted-foreground">Page not found</p>
+        <Link
+          href="/"
+          className="px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors inline-block"
+        >
+          Go Home
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+export default NotFound;

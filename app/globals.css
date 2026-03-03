@@ -1,0 +1,377 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --font-sans: var(--font-inter), sans-serif;
+    --font-heading: var(--font-playfair), serif;
+    --background: 220 26% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 220 20% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 220 20% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 189 94% 43%;
+    --primary-foreground: 220 26% 6%;
+
+    --secondary: 189 60% 30%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 15% 20%;
+    --muted-foreground: 217 10% 64%;
+
+    --accent: 189 94% 50%;
+    --accent-foreground: 220 26% 6%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 189 94% 43%;
+
+    --radius: 1rem;
+
+    /* Enhanced Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(189 94% 43%) 0%, hsl(220 80% 50%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(220 26% 6%) 0%, hsl(220 20% 15%) 100%);
+    --gradient-glow: radial-gradient(circle at 50% 0%, hsl(189 94% 43% / 0.2), transparent 50%);
+    --gradient-mesh: radial-gradient(at 40% 20%, hsl(189 94% 43% / 0.15) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, hsl(220 80% 50% / 0.15) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, hsl(189 94% 43% / 0.1) 0px, transparent 50%);
+
+    /* Professional Shadows */
+    --shadow-glow: 0 0 40px hsl(189 94% 43% / 0.3);
+    --shadow-card: 0 10px 40px hsl(220 26% 6% / 0.4);
+    --shadow-elevation-low: 0 2px 8px hsl(220 26% 6% / 0.1);
+    --shadow-elevation-medium: 0 8px 24px hsl(220 26% 6% / 0.15);
+    --shadow-elevation-high: 0 16px 48px hsl(220 26% 6% / 0.2);
+
+    /* Smooth Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Responsive Spacing */
+    --spacing-section: clamp(3rem, 8vw, 6rem);
+    --spacing-container: clamp(1rem, 4vw, 2rem);
+  }
+
+  .dark {
+    --background: 220 26% 6%;
+    --foreground: 210 40% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    /* Performance optimizations */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeSpeed;
+  }
+
+  /* Smooth scrolling with better performance */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    /* NOTE: Do NOT add transform here. transform on <html> creates a new
+       containing block for position:fixed elements, breaking their viewport
+       anchoring (they become relative to the html bounding box instead). */
+  }
+
+  /* Improved text rendering */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern" 1;
+  }
+
+  /* Responsive typography */
+  h1 {
+    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold;
+  }
+
+  h2 {
+    @apply text-3xl sm:text-4xl md:text-5xl font-bold;
+  }
+
+  h3 {
+    @apply text-2xl sm:text-3xl font-bold;
+  }
+
+  h4 {
+    @apply text-xl sm:text-2xl font-semibold;
+  }
+
+  /* Container improvements */
+  .container {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .gradient-mesh {
+    background: var(--gradient-mesh);
+  }
+
+  /* Performance optimizations */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* Safe version for fixed positioned elements - NO transform */
+  .gpu-accelerated-safe {
+    will-change: opacity;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .smooth-transition {
+    transition: all 0.2s ease-out;
+    will-change: transform, opacity;
+  }
+}
+
+/* Optimize backdrop-blur for better performance */
+.backdrop-blur-sm,
+.backdrop-blur-md,
+.backdrop-blur-xl {
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  /* NOTE: Do NOT add transform here globally. Any element with transform
+     becomes a containing block for position:fixed descendants, which would
+     break fixed widgets nested inside parent elements with backdrop-blur. */
+}
+
+/* Safe backdrop-blur for fixed positioned elements - NO transform */
+.backdrop-blur-safe {
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Optimize animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+  /* Use GPU acceleration */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.animate-scale-in {
+  animation: scale-in 0.3s ease-out forwards;
+  /* Use GPU acceleration */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* Safe animations for fixed positioned elements - NO transform on parent */
+.animate-fade-in-safe {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+.animate-scale-in-safe {
+  animation: scale-in 0.3s ease-out forwards;
+}
+
+/* ─── Modern Homepage Animations ─────────────────────────────────── */
+
+/* Floating gradient orbs */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  25% { transform: translateY(-20px) translateX(10px); }
+  50% { transform: translateY(-10px) translateX(-10px); }
+  75% { transform: translateY(-30px) translateX(5px); }
+}
+
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  25% { transform: translateY(-15px) translateX(-15px); }
+  50% { transform: translateY(-25px) translateX(10px); }
+  75% { transform: translateY(-5px) translateX(-5px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 8s ease-in-out infinite;
+}
+
+/* Gradient text shimmer */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Pulse glow for badges */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 hsl(189 94% 43% / 0.4); }
+  50% { box-shadow: 0 0 20px 4px hsl(189 94% 43% / 0.2); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Marquee / infinite scroll */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Slide up for scroll reveals */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Counter number roll */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-count-up {
+  animation: count-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Line draw animation */
+@keyframes draw-line {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.animate-draw-line {
+  animation: draw-line 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Stagger children utility */
+.stagger-children > * {
+  opacity: 0;
+  animation: slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
+
+/* Glass morphism card */
+.glass-card {
+  background: hsl(220 20% 10% / 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid hsl(189 94% 43% / 0.1);
+}
+
+.glass-card:hover {
+  border-color: hsl(189 94% 43% / 0.3);
+  box-shadow: 0 8px 32px hsl(189 94% 43% / 0.1);
+}
+
+/* Gradient border card */
+.gradient-border {
+  position: relative;
+  background: hsl(220 20% 10% / 0.8);
+  border-radius: 1rem;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, hsl(189 94% 43% / 0.5), transparent 50%, hsl(260 80% 60% / 0.3));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}

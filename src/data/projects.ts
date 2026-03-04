@@ -91,7 +91,7 @@ The entire workflow is connected to a custom UI built in NestJS, enabling sessio
     fullDescription: `An advanced AI-powered portfolio built with Next.js, TypeScript, and N8N automation, featuring intelligent chat interaction to explore my journey, projects, and professional details seamlessly in one place.
 
 The portfolio integrates a custom AI chat widget that connects to an n8n automation backend, enabling visitors to have natural conversations about my skills, projects, and experience. The system uses OpenAI for intelligent responses and n8n for workflow orchestration, creating a unique and engaging portfolio experience.`,
-    youtubeId: https://youtu.be/1LDsPoDG1VE ,
+    youtubeId: 'https://youtu.be/1LDsPoDG1VE' ,
     liveUrl: 'https://ai-portfolio-website-five.vercel.app/',
     technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'N8N', 'OpenAI'],
     features: [
